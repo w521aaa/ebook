@@ -20,4 +20,6 @@ public interface TitleService {
     List<Title> findAllStatus(Integer status);
 
     List<Title> findAllByBookIdAndStatus(String bookId, Integer status);
+
+    void deleteTitle(String titleId);
 }

@@ -3,6 +3,7 @@ package com.weim.service.impl;
 import com.weim.entity.Title;
 import com.weim.exception.EbookException;
 import com.weim.repository.TitleRepository;
+import com.weim.service.ContentService;
 import com.weim.service.TitleService;
 import com.weim.utils.CommonUtils;
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ public class TitleServiceImpl implements TitleService {
 
     @Autowired
     private TitleRepository titleRepository;
+
+    @Autowired
+    private ContentService contentService;
 
     @Override
     public Title saveTitle(Title title) {
@@ -67,5 +71,13 @@ public class TitleServiceImpl implements TitleService {
     @Override
     public List<Title> findAllByBookIdAndStatus(String bookId, Integer status) {
         return titleRepository.findAllByBookIdAndStatus(bookId, status);
+    }
+
+    @Override
+    public void deleteTitle(String titleId) {
+
+        contentService.deleteContentByTitleId(titleId);
+
+        titleRepository.deleteById(titleId);
     }
 }

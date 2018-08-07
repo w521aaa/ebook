@@ -18,4 +18,6 @@ public interface ContentRepository extends JpaRepository<Content, String> , JpaS
     List<Content> findAllByStatus(Integer status);
 
     Content findByTitleId(String titleId);
+
+    void deleteByTitleId(String titleId);
 }

@@ -37,6 +37,7 @@
             <span th:if="${book.status == 0}"><button th:onclick="'downloadImage(\'' + ${book.id} + '\')'">爬取图片</button></span><br/>
             <span th:if="${book.status == 1}">图片已经下载</span><br/>
             <span><a th:href="@{'/admin/ebook/titles/' + ${book.id}}">查看章节</a></span><br/>
+            <button th:onclick="'deleteBook(\'' + ${book.id} + '\')'">删除</button>
         </div>
     </div>
 </body>
@@ -48,6 +49,20 @@
             url: '/admin/ebook/books/'+bookId+'/downloadImage',
             success: function(data){
                 alert(data.msg);
+            },
+            error:function(data){
+                alert("出错了！！:"+data.msg);
+            }
+        });
+    }
+
+    function deleteBook(bookId) {
+        $.ajax({
+            type: 'delete',
+            url: '/admin/ebook/books/'+bookId,
+            success: function(data){
+                alert(data.msg);
+                window.location.href = "/admin/ebook/books";
             },
             error:function(data){
                 alert("出错了！！:"+data.msg);

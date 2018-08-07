@@ -14,4 +14,6 @@ public interface ContentService {
     Content saveContent(Content content);
 
     Content findByTitleId(String titleId);
+
+    void deleteContentByTitleId(String titleId);
 }

@@ -44,4 +44,9 @@ public class ContentServiceImpl implements ContentService {
     public Content findByTitleId(String titleId) {
         return contentRepository.findByTitleId(titleId);
     }
+
+    @Override
+    public void deleteContentByTitleId(String titleId) {
+        contentRepository.deleteByTitleId(titleId);
+    }
 }

@@ -110,6 +110,15 @@ public class BookController {
         return new ResObject(0, "正在后台默默执行");
     }
 
+    @ResponseBody
+    @DeleteMapping("/admin/ebook/books/{bookId}")
+    public ResObject deleteBook(@PathVariable String bookId) throws IOException {
+
+        bookService.deleteBook(bookId);
+
+        return new ResObject();
+    }
+
 
     /**
      * 处理 获取内容

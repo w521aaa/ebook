@@ -18,4 +18,6 @@ public interface BookService {
     Book findBookById(String bookId);
 
     List<Book> findAllByEndStatus(Integer endStatus);
+
+    void deleteBook(String bookId);
 }
