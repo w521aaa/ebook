@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>download book</title>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+<body>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>书名</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="textFile, textFileStat : ${textFileList}">
+                <td th:text="${textFileStat.index}"></td>
+                <td th:text="${textFile.title}"></td>
+                <td><a th:href="${textFile.url}">下载</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script th:inline="javascript">
+
+</script>
+
+</html>

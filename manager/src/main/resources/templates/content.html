@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Content</title>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+
+<style>
+    div a {
+        font-size: 30px;
+    }
+</style>
+
+<body>
+
+    <h1 th:text="${content.title}"></h1>
+
+    <div id="content">
+
+    </div>
+
+    <div>
+        <a th:if="${prePage != null}" th:href="@{'/admin/ebook/contents/' + ${prePage.id}}" th:text="${prePage.title}"></a>
+        <a th:if="${nextPage != null}" th:href="@{'/admin/ebook/contents/' + ${nextPage.id}}" th:text="${nextPage.title}"></a>
+    </div>
+</body>
+
+<script th:inline="javascript">
+
+    $(function () {
+        $("#content").html([[${content.content}]]);
+    })
+
+
+</script>
+</html>

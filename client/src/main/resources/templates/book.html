@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+
+<style>
+    .div_list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .div_book {
+        border: 1px solid #999;
+        border-radius: 10px;
+        /*flex: auto;*//*这是关键*/
+        margin: 5px;
+        padding: 10px;
+        width: 14%;/*每个元素的初始化宽度,这是关键*/
+    }
+    .div_book img {
+        width: 180px;
+        height: 240px;
+    }
+</style>
+
+<body>
+    <div class="div_list">
+        <div class="div_book" th:each="book : ${bookList}">
+            <img th:src="${book.localImage}"/><br/>
+            <span th:text="${book.title}"></span><br/>
+            <span th:text="${book.author}"></span><br/>
+            <span th:text="${book.createDate}"></span><br/>
+            <span><a th:href="@{'/ebook/titles/' + ${book.id}}">查看章节</a></span><br/>
+        </div>
+    </div>
+
+    <div class="div_message">
+        <span>书名：</span><input id="message" placeholder="请输入想要看的电子书名" maxlength="30" /><br/>
+        <span>邮箱:</span><input id="email" placeholder="请输入邮箱" type="email" maxlength="20" /><br/>
+        <button id="button_message">提交</button>
+    </div>
+</body>
+
+<script th:inline="javascript">
+
+    $(function () {
+        $("#button_message").click(function () {
+
+            if($("#message").val() == null || $("#message").val() == "") {
+                return;
+            }
+
+            if($("#email").val() == null || $("#email").val() == "") {
+                return;
+            }
+
+            var message = {
+                message : $("#message").val(),
+                email : $("#email").val()
+            };
+
+            $.ajax({
+                type: 'post',
+                url: '/ebook/message',
+                contentType: 'application/json;charset=utf-8',
+                dataType:"json",
+                data : JSON.stringify(message),
+                success: function(data){
+                    alert(data.msg);
+                    if(data.code == 0) {
+                        $("#message").val("");
+                        $("#email").val("");
+                    }
+                },
+                error:function(data){
+                    alert("出错了！！:"+data.msg);
+                }
+            });
+        })
+    })
+
+</script>
+</html>

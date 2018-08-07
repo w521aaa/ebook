@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+
+<style>
+    .div_list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .div_book {
+        border: 1px solid #999;
+        border-radius: 10px;
+        /*flex: auto;*//*这是关键*/
+        margin: 5px;
+        padding: 10px;
+        width: 14%;/*每个元素的初始化宽度,这是关键*/
+    }
+
+    .div_book img {
+        width: 180px;
+        height: 240px;
+    }
+</style>
+
+<body>
+    <div class="div_list">
+        <div class="div_book" th:each="book : ${bookList}">
+            <img th:src="${book.localImage}"/><br/>
+            <span th:text="${book.title}"></span><br/>
+            <span th:text="${book.author}"></span><br/>
+            <span th:text="${book.createDate}"></span><br/>
+            <span th:if="${book.status == 0}"><button th:onclick="'downloadImage(\'' + ${book.id} + '\')'">爬取图片</button></span><br/>
+            <span th:if="${book.status == 1}">图片已经下载</span><br/>
+            <span><a th:href="@{'/admin/ebook/titles/' + ${book.id}}">查看章节</a></span><br/>
+        </div>
+    </div>
+</body>
+
+<script th:inline="javascript">
+    function downloadImage(bookId) {
+        $.ajax({
+            type: 'post',
+            url: '/admin/ebook/books/'+bookId+'/downloadImage',
+            success: function(data){
+                alert(data.msg);
+            },
+            error:function(data){
+                alert("出错了！！:"+data.msg);
+            }
+        });
+    }
+
+    $(function () {
+
+    })
+
+</script>
+</html>

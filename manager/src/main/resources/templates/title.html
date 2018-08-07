@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+<body>
+    <h3 th:text="${book.title}"></h3>
+    <h3><button id="downloadAll">一键下载</button></h3>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>ID</th>
+                <th>章节</th>
+                <th>url</th>
+                <th>拉取时间</th>
+                <th>内容是否下载</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="title, titleStat : ${titleList}">
+                <td th:text="${titleStat.index}"></td>
+                <td th:text="${title.id}"></td>
+                <td th:text="${title.title}"></td>
+                <td th:text="${title.url}"></td>
+                <td th:text="${title.createDate}"></td>
+                <td th:if="${title.status == 0}"><button th:onclick="'downloadContent(\'' + ${title.id} + '\')'">爬取内容</button></td>
+                <td th:if="${title.status == 1}">内容已经下载</td>
+                <td><a th:href="@{'/admin/ebook/contents/' + ${title.id}}">查看内容</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script th:inline="javascript">
+    function downloadContent(titleId) {
+        $.ajax({
+            type: 'post',
+            url: '/admin/ebook/titles/'+titleId+'/downloadContent',
+            success: function(data){
+                alert(data.msg);
+            },
+            error:function(data){
+                alert("出错了！！:"+data.msg);
+            }
+        });
+    }
+
+    $(function () {
+        $("#downloadAll").click(function () {
+            var bookId = [[${book.id}]];
+
+            $.ajax({
+                type: 'post',
+                url: '/admin/ebook/titles/downloadAllContent/' + bookId,
+                success: function(data){
+                    alert(data.msg);
+                    setTimeout(function () {
+                        window.location.href = "/admin/ebook/titles/" + bookId;
+                    }, 3000);
+                },
+                error:function(data){
+                    alert("出错了！！:"+data.msg);
+                }
+            });
+        });
+    })
+
+</script>
+
+</html>

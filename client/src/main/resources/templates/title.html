@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+
+<style>
+    .div_list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .div_title {
+        border: 1px solid #999;
+        border-radius: 10px;
+        /*flex: auto;*//*这是关键*/
+        margin: 5px;
+        padding: 10px;
+        width: 14%;/*每个元素的初始化宽度,这是关键*/
+    }
+</style>
+
+<body>
+<div class="div_list">
+    <div class="div_title" th:each="title, titleStat : ${titleList}">
+        <span><a th:href="@{'/ebook/contents/' + ${title.id}}" th:text="${title.title}"></a></span><br/>
+    </div>
+</div>
+
+    <!--<table border="2">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>序号</th>-->
+                <!--<th>ID</th>-->
+                <!--<th>章节</th>-->
+                <!--<th>url</th>-->
+                <!--<th>拉取时间</th>-->
+                <!--<th>操作</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <!--<tr th:each="title, titleStat : ${titleList}">-->
+                <!--<td th:text="${titleStat.index}"></td>-->
+                <!--<td th:text="${title.id}"></td>-->
+                <!--<td th:text="${title.title}"></td>-->
+                <!--<td th:text="${title.url}"></td>-->
+                <!--<td th:text="${title.createDate}"></td>-->
+                <!--<td><a th:href="@{'/ebook/contents/' + ${title.id}}">查看内容</a></td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+</body>
+</html>
