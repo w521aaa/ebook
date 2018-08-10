@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,5 +80,10 @@ public class TitleServiceImpl implements TitleService {
         contentService.deleteContentByTitleId(titleId);
 
         titleRepository.deleteById(titleId);
+    }
+
+    @Override
+    public List<Title> findAllByBookIdAndCreateDate(String bookId, Date date) {
+        return titleRepository.findAllByBookIdIsAndCreateDateGreaterThanEqual(bookId,date);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +25,6 @@ public interface TitleRepository extends JpaRepository<Title, String> , JpaSpeci
     List<Title> findAllByStatus(Integer status);
 
     List<Title> findAllByBookIdAndStatus(String bookId, Integer status);
+
+    List<Title> findAllByBookIdIsAndCreateDateGreaterThanEqual(String bookId, Date date);
 }

@@ -2,6 +2,7 @@ package com.weim.service;
 
 import com.weim.entity.Title;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,4 +23,6 @@ public interface TitleService {
     List<Title> findAllByBookIdAndStatus(String bookId, Integer status);
 
     void deleteTitle(String titleId);
+
+    List<Title> findAllByBookIdAndCreateDate(String bookId, Date date);
 }
