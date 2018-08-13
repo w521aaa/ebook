@@ -64,6 +64,7 @@ public class FetchContent {
 
                     //下载内容完成之后 更新title状态
                     title.setStatus(CommonUtils.IS_DOWNLOAD);
+                    title.setCreateDate(new Date());
                     titleService.saveTitle(title);
 
                 } catch (IOException e) {

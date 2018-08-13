@@ -32,10 +32,6 @@ public class Title {
     @Column(columnDefinition = "tinyint default 0")
     private Integer status = CommonUtils.IS_NOT_DOWNLOAD;
 
-    public Title () {
-        this.setCreateDate(new Date());
-    }
-
     public String getId() {
         return id;
     }
