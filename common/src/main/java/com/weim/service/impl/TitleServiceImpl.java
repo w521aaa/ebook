@@ -84,6 +84,6 @@ public class TitleServiceImpl implements TitleService {
 
     @Override
     public List<Title> findAllByBookIdAndCreateDate(String bookId, Date date) {
-        return titleRepository.findAllByBookIdIsAndCreateDateGreaterThanEqual(bookId,date);
+        return titleRepository.findAllByBookIdIsAndCreateDateGreaterThanEqual(bookId,date, new Sort(Sort.Direction.ASC, "sort"));
     }
 }

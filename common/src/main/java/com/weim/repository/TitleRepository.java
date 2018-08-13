@@ -26,5 +26,5 @@ public interface TitleRepository extends JpaRepository<Title, String> , JpaSpeci
 
     List<Title> findAllByBookIdAndStatus(String bookId, Integer status);
 
-    List<Title> findAllByBookIdIsAndCreateDateGreaterThanEqual(String bookId, Date date);
+    List<Title> findAllByBookIdIsAndCreateDateGreaterThanEqual(String bookId, Date date, Sort sort);
 }
