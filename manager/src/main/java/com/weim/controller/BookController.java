@@ -47,10 +47,10 @@ public class BookController {
 
     private ExecutorService executorService = new ScheduledThreadPoolExecutor(2);
 
-    @GetMapping("/admin/ebook")
+    @GetMapping("/admin/ebook/search")
     public String toAdmin() {
 
-        return "login";
+        return "search";
     }
 
     @GetMapping("/admin/ebook/books")
