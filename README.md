@@ -4,7 +4,7 @@
 项目地址  
 [http://www.51weim.com/ebook/books](http://188.131.131.82/ebook/books)  
 项目管理地址  
-[http://www.51weim.com/admin/ebook/books](http://188.131.131.82/admin/ebook/books)
+[http://www.51weim.com/admin/ebook/books](http://188.131.131.82/admin/ebook/login)
 
 *域名还未备案*
 
