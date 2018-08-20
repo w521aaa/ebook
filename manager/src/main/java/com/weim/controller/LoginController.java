@@ -15,7 +15,7 @@ public class LoginController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @GetMapping("/admin/ebook")
+    @GetMapping("/admin/ebook/login")
     public String goLogin() {
 
         return "login";

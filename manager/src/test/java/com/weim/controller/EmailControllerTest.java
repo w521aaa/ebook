@@ -39,15 +39,15 @@ public class EmailControllerTest {
         email.put("to","xxxxxxxxxxxxx");
         JSONObject jsonObject = new JSONObject(email);
 
-        String content = mockMvc.perform(post("/api/v1/email/send")
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .content(jsonObject.toString()))
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        System.out.println("=====>" + content);
+//        String content = mockMvc.perform(post("/api/v1/email/send")
+//                .contentType(MediaType.APPLICATION_JSON_UTF8)
+//                .accept(MediaType.APPLICATION_JSON_UTF8)
+//                .content(jsonObject.toString()))
+//                .andReturn()
+//                .getResponse()
+//                .getContentAsString();
+//
+//        System.out.println("=====>" + content);
 
     }
 }

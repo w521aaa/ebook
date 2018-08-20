@@ -24,6 +24,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        //没有session 跳转到登录页面
+        if(request.getSession().getAttribute("name") == null) {
+            response.sendRedirect("/admin/ebook/login");
+            return false;
+        }
+
+        //有session 登录名和密码正确 通过
         String nameSession = request.getSession().getAttribute("name").toString();
         String passwordSession = request.getSession().getAttribute("password").toString();
 
@@ -32,7 +40,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         } else {
             request.getSession().invalidate();
             throw new Exception("错误");
-
         }
     }
 
