@@ -57,6 +57,10 @@ public class CleanRedisKey {
                     redisTemplate.delete(text);
                 }
 
+                //更改书本状态为2 不再次清理了
+                book.setEndStatus(2);
+                bookService.saveBook(book);
+
             });
 
 
