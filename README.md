@@ -2,9 +2,9 @@
 搭建自己的电子书网站  
 
 项目地址  
-[http://www.51weim.com/ebook/books](http://188.131.131.82/ebook/books)  
+[http://ebook.51weim.cn/ebook/books](http://ebook.51weim.cn/ebook/books)  
 项目管理地址  
-[http://www.51weim.com/admin/ebook/books](http://188.131.131.82/admin/ebook/login)
+[http://ebook.51weim.cn/admin/ebook/books](http://ebook.51weim.cn/admin/ebook/login)
 
 *域名还未备案*
 
@@ -19,7 +19,7 @@
 
 - upload 文件夹下  
   image目录是下载下来的电子书图片  
-  text目录准备存放电子书文件，暂未开发 [下载链接](http://188.131.131.82/ebook/books/download)  
+  text目录准备存放电子书文件，暂未开发 [下载链接](http://ebook.51weim.cn/ebook/books/download)  
 
 **前台页面只是实现功能，欢迎修改**  
 **仅作为学习，谢谢**
