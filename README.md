@@ -6,8 +6,6 @@
 项目管理地址  
 [http://ebook.51weim.cn/admin/ebook/books](http://ebook.51weim.cn/admin/ebook/login)
 
-*域名还未备案*
-
 - 项目使用mvn分模块
   common 共有模块  
   client 客户端  
